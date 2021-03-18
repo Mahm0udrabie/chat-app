@@ -1,13 +1,13 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
+      <div class="col-md-12">
         <ul class="list-group" width="auto">
-          <li class="list-group-item" v-for="user in users" :key="user">{{user.name}} : {{user.email}}</li>
+          <li class="list-group-item" v-for="(user, idx) in users" :key="idx">
+            <router-link :to="{ name: 'Chat', params: { userId: user.id }}">{{user.name}}</router-link>
+          </li>
         </ul>
       </div>
-      <div class="col-md-4"></div>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
     getUsers() {
       axios.get('http://127.0.0.1:8000/users').then((response) => {
         this.users = response.data.data;
-        console.log(response.data);
+        // console.log(response.data);
       });
     },
   },

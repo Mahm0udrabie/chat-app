@@ -25,7 +25,7 @@
           />
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" @click="login">Login</button>
+          <button class="btn btn-primary" @click="login" @keyup.enter="login">Login</button>
         </div>
       </div>
       <div class="col-md-4"></div>
@@ -56,12 +56,13 @@ export default {
           password: this.password,
         })
         .then((res) => {
-          console.log(res);
-          if (res && res.data && res.data[0]) {
+          // console.log(res.data.data.token);
+          if (res && res.data && res.data.data.token) {
             this.$store.commit('changeUserLogged', true);
-            localStorage.setItem('token', res.data[0].token);
-            localStorage.setItem('data', res.data.data);
-            console.log(res.data.data.name);
+            localStorage.setItem('token', res.data.data.token);
+            localStorage.setItem('data', res.data.data.username);
+            localStorage.setItem('channel', res.data.data.channel);
+            this.$router.push('/');
           }
         })
         .catch((error) => {

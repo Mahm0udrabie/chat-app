@@ -14,6 +14,8 @@ Vue.use(Vuex);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueAxios, axios);
+Vue.component('chat-messages', require('./views/chat/ChatMessages.vue').default);
+Vue.component('chat-form', require('./views/chat/ChatForm.vue').default);
 
 new Vue({
   router,

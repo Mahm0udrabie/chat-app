@@ -9,6 +9,7 @@
         <b-navbar-nav>
             <b-nav-item to="/about">About</b-nav-item>
             <b-nav-item v-if="userLogged" to="/users">Users</b-nav-item>
+            <b-nav-item v-if="userLogged" to="/chats">Chat</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
@@ -18,14 +19,14 @@
             <!-- <b-nav-item-dropdown text="Lang" right>
             <b-dropdown-item href="#">EN</b-dropdown-item>
             <b-dropdown-item href="#">Ar</b-dropdown-item>
-            </b-nav-item-dropdown> -->
+                </b-nav-item-dropdown> -->
 
             <b-nav-item-dropdown v-if="userLogged" right>
             <!-- Using 'button-content' slot -->
             <template #button-content>
-                <em>User</em>
+                <em>{{ username }}</em>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'UserProfile', params: { username: username }}">Profile</b-dropdown-item>
             <b-dropdown-item href="#">Sign Out</b-dropdown-item>
             </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -41,6 +42,7 @@ export default {
   name: 'Navbar',
   data: () => ({
     user: null,
+    username: null,
   }),
   created() {
     this.getUserData();
@@ -55,7 +57,7 @@ export default {
   },
   methods: {
     getUserData() {
-      this.user = this.userInfo;
+      this.username = this.$store.getters.userData;
     },
   },
 };

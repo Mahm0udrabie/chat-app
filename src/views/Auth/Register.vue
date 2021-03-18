@@ -22,7 +22,7 @@
         <input type="password" v-model="password_confirmation" name="password_confirmation" class="form-control" >
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" @click="register">Register</button>
+        <button class="btn btn-primary" @click="register" @keyup.enter="register">Register</button>
       </div>
     </div>
     <div class="col-md-4"></div>
@@ -57,8 +57,10 @@ export default {
         error: false,
       }).then((res) => {
         if (res && res.data && res.data.token) {
+          console.log(res.data);
           this.$store.commit('changeUserLogged', true);
           localStorage.setItem('token', res.data.token.token);
+          localStorage.setItem('channel', res.data.data.channel);
           this.$store.commit('regUser', true);
           this.success = true;
           this.$router.push('/');
