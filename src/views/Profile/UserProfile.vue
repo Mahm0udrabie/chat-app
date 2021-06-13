@@ -363,7 +363,7 @@ export default {
     getUsers() {
       axios
         .get(
-          `http://127.0.0.1:8000/api/profile/${this.$store.getters.userData}`,
+          `https://secret-tundra-43792.herokuapp.com/api/profile/${this.$store.getters.userData}`,
         )
         .then((response) => {
           this.userData = response.data.data;

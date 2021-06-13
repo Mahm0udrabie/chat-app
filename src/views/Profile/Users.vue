@@ -21,6 +21,7 @@
                     <div class="row row-table">
                         <div class="col-xs-12 text-white">
                              <!-- eslint-disable-next-line max-len -->
+                             <h1>لا خير ف عمــــل يلهي عن الصلاة</h1>
                             <img v-if="user.avatar"  :src="user.avatar" alt="Image"
                                 class="img-thumbnail rounded-circle thumb128">
                              <!-- eslint-disable-next-line max-len -->
@@ -87,7 +88,7 @@ export default {
   },
   methods: {
     getUsers() {
-      axios.get('http://127.0.0.1:8000/users').then((response) => {
+      axios.get('https://secret-tundra-43792.herokuapp.com/users').then((response) => {
         this.users = response.data.data;
         console.log(response.data);
       });

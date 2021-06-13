@@ -51,7 +51,7 @@ export default {
   methods: {
     async login() {
       await axios
-        .post('http://127.0.0.1:8000/api/login', {
+        .post('https://secret-tundra-43792.herokuapp.com/api/login', {
           email: this.email,
           password: this.password,
         })

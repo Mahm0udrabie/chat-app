@@ -132,14 +132,14 @@ export default {
   },
   methods: {
     getPosts() {
-      axios.get('http://127.0.0.1:8000/api/index').then((response) => {
+      axios.get('https://secret-tundra-43792.herokuapp.com/api/index').then((response) => {
         this.posts = response.data.data;
         // console.log(this.posts);
         this.user = true;
       });
     },
     addPost() {
-      axios.post('http://127.0.01:8000/api/posts/add_post', {
+      axios.post('https://secret-tundra-43792.herokuapp.com/api/posts/add_post', {
         body: this.body,
         title: this.title,
       }).then((response) => {
@@ -149,7 +149,7 @@ export default {
       });
     },
     addComment(post) {
-      axios.post('http://127.0.0.1:8000/api/post/comment/add_comment', {
+      axios.post('https://secret-tundra-43792.herokuapp.com/api/post/comment/add_comment', {
         comment: post.comment,
         article_id: post.id,
       }).then((response) => {
@@ -161,7 +161,7 @@ export default {
       console.log('new comment', post);
     },
     getComments() {
-      axios.get('http://127.0.0.1:8000/api/post/comments').then((response) => {
+      axios.get('https://secret-tundra-43792.herokuapp.com/api/post/comments').then((response) => {
         console.log(response.data.data);
       });
     },

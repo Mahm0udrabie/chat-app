@@ -52,7 +52,7 @@ export default {
     addMessage() {
       // this.messages.push(message);
       axios
-        .post('http://127.0.0.1:8000/api/messages/add', {
+        .post('https://secret-tundra-43792.herokuapp.com/api/messages/add', {
           // sender_id: this.sender_id,
           body: this.newMessage,
           receiver_id: this.receiver_id,

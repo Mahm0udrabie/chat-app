@@ -48,7 +48,7 @@ export default {
     register() {
       this.error = false;
       this.success = false;
-      axios.post('http://127.0.0.1:8000/api/register', {
+      axios.post('https://secret-tundra-43792.herokuapp.com/api/register', {
         name: this.name,
         username: this.username,
         email: this.email,

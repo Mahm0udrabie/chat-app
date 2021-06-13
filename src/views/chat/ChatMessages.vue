@@ -61,7 +61,8 @@ export default {
   },
   methods: {
     fetchMessages() {
-      axios.get(`http://127.0.0.1:8000/api/messages/users/${this.$route.params.userId}`).then((response) => {
+      // eslint-disable-next-line max-len
+      axios.get(`https://secret-tundra-43792.herokuapp.com/api/messages/users/${this.$route.params.userId}`).then((response) => {
         this.chats = response.data.messages;
       });
     },
